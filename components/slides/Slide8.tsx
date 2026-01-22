@@ -2,12 +2,15 @@
 
 import { motion } from 'framer-motion'
 import { EventsChart } from '../Charts'
+import { ExternalLink } from 'lucide-react'
 
 export function Slide8() {
   const experiences = [
     {
       title: 'Camarotes e Experiências',
-      description: 'Acesso premium a eventos exclusivos'
+      description: 'Acesso premium a eventos exclusivos',
+      link: 'https://prospereexperiencia.vercel.app/',
+      highlight: true
     },
     {
       title: 'Eventos e Ativações',
@@ -20,7 +23,7 @@ export function Slide8() {
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center px-8 py-16">
+    <div className="relative w-full h-full flex flex-col items-center justify-center px-4 sm:px-8 py-8 sm:py-16">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -48,11 +51,39 @@ export function Slide8() {
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-prospere/10 hover:border-prospere/30 transition-all"
-              whileHover={{ x: 4 }}
+              className={`p-6 rounded-xl transition-all ${
+                exp.highlight
+                  ? 'bg-gradient-to-br from-prospere/20 to-prospere/10 border-2 border-prospere/50 hover:border-prospere/70'
+                  : 'bg-white/5 border border-white/10 hover:bg-prospere/10 hover:border-prospere/30'
+              }`}
+              whileHover={{ x: 4, scale: exp.highlight ? 1.02 : 1 }}
             >
-              <h3 className="text-lg font-bold text-white mb-2">{exp.title}</h3>
-              <p className="text-gray-400 text-sm">{exp.description}</p>
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+                {exp.link && (
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-prospere hover:text-red-400 transition-colors flex-shrink-0"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                )}
+              </div>
+              <p className="text-gray-400 text-sm mb-2">{exp.description}</p>
+              {exp.link && (
+                <a
+                  href={exp.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-prospere text-xs font-semibold hover:underline inline-flex items-center gap-1"
+                >
+                  Acessar Camarote Prospere
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
             </motion.div>
           ))}
         </motion.div>

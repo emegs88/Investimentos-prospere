@@ -17,6 +17,11 @@ function CountUp({ value, delay }: { value: string; delay: number }) {
   const numValue = parseInt(value.replace(/\D/g, ''))
 
   useEffect(() => {
+    if (numValue === 0) {
+      setDisplayValue('0')
+      return
+    }
+
     let start = 0
     const duration = 2
     const increment = numValue / (duration * 60)

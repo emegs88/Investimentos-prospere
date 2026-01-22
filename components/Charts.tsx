@@ -24,7 +24,7 @@ export function RevenueChart() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="w-full h-80 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm"
+      className="w-full h-64 sm:h-80 bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10 backdrop-blur-sm"
     >
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={chartData}>
@@ -65,7 +65,7 @@ export function ProjectionChart() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="w-full h-80 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm"
+      className="w-full h-64 sm:h-80 bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10 backdrop-blur-sm"
     >
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartData}>
@@ -95,7 +95,7 @@ export function EventsChart() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="w-full h-80 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm"
+      className="w-full h-64 sm:h-80 bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10 backdrop-blur-sm"
     >
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={eventData}>
@@ -129,7 +129,7 @@ export function BidConChart() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="w-full h-80 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm"
+      className="w-full h-64 sm:h-80 bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10 backdrop-blur-sm"
     >
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={bidconData}>

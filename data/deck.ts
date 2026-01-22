@@ -12,6 +12,18 @@ export interface KPI {
   highlight?: boolean
 }
 
+export interface Pillar {
+  name: string
+  description: string
+  icon: string
+  details?: {
+    administrator?: string
+    model?: string
+    focus?: string
+    value?: string
+  }
+}
+
 export const slides: Slide[] = [
   {
     id: 1,
@@ -73,8 +85,8 @@ export const slides: Slide[] = [
   },
   {
     id: 11,
-    title: 'Tecnologias por Trás',
-    subtitle: 'Stack Moderno e Escalável',
+    title: 'Estratégia de Expansão & Investimento',
+    subtitle: 'Captação para Expansão de Lojas',
     type: 'content'
   }
 ]
@@ -134,11 +146,17 @@ export const eventData = [
   { month: 'Dez', events: 15 }
 ]
 
-export const pillars = [
+export const pillars: Pillar[] = [
   {
     name: 'Prospere Consórcios',
-    description: 'Aquisição e Patrimônio',
-    icon: 'Building2'
+    description: 'Consórcio administrado pela Ancor (White Label) • Foco em método de vendas e tecnologias',
+    icon: 'Building2',
+    details: {
+      administrator: 'Ancor',
+      model: 'White Label',
+      focus: 'Método de vendas e tecnologias',
+      value: 'Aquisição e Patrimônio'
+    }
   },
   {
     name: 'Prospere Imóveis',

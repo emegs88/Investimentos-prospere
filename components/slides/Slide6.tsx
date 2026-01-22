@@ -5,7 +5,7 @@ import { RevenueChart } from '../Charts'
 
 export function Slide6() {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center px-8 py-16">
+    <div className="relative w-full h-full flex flex-col items-center justify-center px-4 sm:px-8 py-8 sm:py-16">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}

@@ -24,7 +24,7 @@ export function Slide3() {
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center px-8 py-16">
+    <div className="relative w-full h-full flex flex-col items-center justify-center px-4 sm:px-8 py-8 sm:py-16">
       <motion.h2
         className="text-4xl sm:text-5xl lg:text-7xl font-black mb-4 text-center"
         initial={{ opacity: 0, y: -30 }}

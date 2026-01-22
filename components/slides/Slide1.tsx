@@ -6,31 +6,29 @@ import { Logo } from '../Logo'
 
 export function Slide1() {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center px-8 overflow-hidden">
-      {/* Logo no topo */}
-      <motion.div
-        className="absolute top-8 left-8 z-20"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <Logo brand="prospere" width={150} height={45} />
-      </motion.div>
-
+    <div className="relative w-full h-full flex flex-col items-center justify-center px-4 sm:px-8 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="max-w-4xl text-center z-10"
       >
-        <motion.h1
-          className="text-5xl sm:text-6xl lg:text-8xl font-black mb-6 leading-tight"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        {/* Logo Prospere no lugar do texto "Prospere:" */}
+        <motion.div
+          className="mb-6 flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="text-white">Prospere:</span>
-          <br />
+          <Logo brand="prospere" width={280} height={84} className="sm:w-[350px] sm:h-[105px]" />
+        </motion.div>
+
+        <motion.h1
+          className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <span className="bg-gradient-to-r from-prospere to-red-500 bg-clip-text text-transparent">
             estratégia, patrimônio e escala
           </span>

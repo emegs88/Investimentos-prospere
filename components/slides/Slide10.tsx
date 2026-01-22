@@ -9,7 +9,7 @@ export function Slide10() {
   }
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center px-8 overflow-hidden">
+    <div className="relative w-full h-full flex flex-col items-center justify-center px-4 sm:px-8 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -44,10 +44,23 @@ export function Slide10() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <button className="px-6 sm:px-8 py-3 sm:py-4 bg-prospere text-white rounded-lg font-semibold hover:bg-red-700 transition-colors flex items-center gap-2 text-sm sm:text-base">
+          <button 
+            onClick={() => window.open('https://wa.me/5511999999999?text=Olá! Tenho interesse em ser parceiro da Prospere.', '_blank')}
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-prospere text-white rounded-lg font-semibold hover:bg-red-700 transition-colors flex items-center gap-2 text-sm sm:text-base"
+          >
             Quero ser parceiro
             <ArrowRight className="w-5 h-5" />
           </button>
+
+          <a
+            href="https://prospereexperiencia.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-prospere/20 border-2 border-prospere/50 text-prospere rounded-lg font-semibold hover:bg-prospere/30 transition-colors flex items-center gap-2 text-sm sm:text-base"
+          >
+            <ExternalLink className="w-5 h-5" />
+            Camarote Prospere
+          </a>
 
           <a
             href="https://bidcon.vercel.app/"

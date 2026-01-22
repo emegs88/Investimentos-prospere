@@ -76,12 +76,27 @@ export default function Home() {
         url: window.location.href
       }).catch(() => {
         // Fallback to clipboard
-        navigator.clipboard.writeText(window.location.href)
-        alert('Link copiado!')
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          // Show toast notification instead of alert
+          const toast = document.createElement('div')
+          toast.className = 'fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-prospere text-white px-6 py-3 rounded-lg shadow-lg z-50'
+          toast.textContent = 'Link copiado!'
+          document.body.appendChild(toast)
+          setTimeout(() => {
+            toast.remove()
+          }, 2000)
+        })
       })
     } else {
-      navigator.clipboard.writeText(window.location.href)
-      alert('Link copiado!')
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const toast = document.createElement('div')
+        toast.className = 'fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-prospere text-white px-6 py-3 rounded-lg shadow-lg z-50'
+        toast.textContent = 'Link copiado!'
+        document.body.appendChild(toast)
+        setTimeout(() => {
+          toast.remove()
+        }, 2000)
+      })
     }
   }, [])
 
@@ -122,19 +137,19 @@ export default function Home() {
       </div>
 
       {/* Controls */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4 z-40 lg:left-auto lg:right-8 lg:transform-none">
+      <div className="fixed bottom-20 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-2 sm:gap-4 z-40 lg:left-auto lg:right-8 lg:transform-none">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={handlePrev}
           disabled={currentSlide === 0}
-          className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
+          className="p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
           aria-label="Slide anterior"
         >
-          <ChevronLeft className="w-6 h-6 text-white" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </motion.button>
 
-        <div className="px-6 py-2 bg-white/5 border border-white/20 rounded-full text-white font-mono text-sm">
+        <div className="px-4 sm:px-6 py-2 bg-white/5 border border-white/20 rounded-full text-white font-mono text-xs sm:text-sm">
           {String(currentSlide + 1).padStart(2, '0')} /{' '}
           {String(slides.length).padStart(2, '0')}
         </div>
@@ -144,15 +159,15 @@ export default function Home() {
           whileTap={{ scale: 0.95 }}
           onClick={handleNext}
           disabled={currentSlide === slides.length - 1}
-          className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
+          className="p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
           aria-label="Próximo slide"
         >
-          <ChevronRight className="w-6 h-6 text-white" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </motion.button>
       </div>
 
       {/* Top right actions */}
-      <div className="fixed top-8 right-8 flex items-center gap-3 z-40">
+      <div className="fixed top-4 sm:top-8 right-4 sm:right-8 flex items-center gap-2 sm:gap-3 z-40">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -177,11 +192,11 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="fixed bottom-0 left-0 right-0 h-16 flex items-center justify-between px-8 border-t border-white/10 bg-black/50 backdrop-blur-sm lg:pl-96 z-30">
-        <div className="text-gray-600 text-sm font-mono">
+      <div className="fixed bottom-0 left-0 right-0 h-14 sm:h-16 flex items-center justify-between px-4 sm:px-8 border-t border-white/10 bg-black/50 backdrop-blur-sm lg:pl-96 z-30">
+        <div className="text-gray-600 text-xs sm:text-sm font-mono">
           Prospere {new Date().getFullYear()}
         </div>
-        <div className="text-gray-600 text-xs hidden sm:block">
+        <div className="text-gray-600 text-xs hidden md:block">
           Use ← → ou N/P para navegar | F para tela cheia
         </div>
       </div>

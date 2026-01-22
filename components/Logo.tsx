@@ -13,18 +13,18 @@ interface LogoProps {
 }
 
 export function Logo({ brand, width = 200, height = 60, className = '', showFallback = true }: LogoProps) {
-  const [imgSrc, setImgSrc] = useState(`/logo/${brand}-logo.svg`)
-  const [hasError, setHasError] = useState(false)
+  const [imgError, setImgError] = useState(false)
+  const [currentSrc, setCurrentSrc] = useState(`/logo/${brand}-logo.svg`)
 
   const handleError = () => {
-    if (imgSrc.endsWith('.svg')) {
-      setImgSrc(`/logo/${brand}-logo.png`)
+    if (currentSrc.endsWith('.svg')) {
+      setCurrentSrc(`/logo/${brand}-logo.png`)
     } else {
-      setHasError(true)
+      setImgError(true)
     }
   }
 
-  if (hasError && showFallback) {
+  if (imgError && showFallback) {
     return (
       <motion.div
         className={`flex items-center justify-center ${className}`}
@@ -33,7 +33,7 @@ export function Logo({ brand, width = 200, height = 60, className = '', showFall
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="text-2xl font-bold text-prospere">
+        <div className="text-2xl sm:text-3xl font-bold text-prospere">
           {brand === 'prospere' ? 'PROSPERE' : 'BIDCON'}
         </div>
       </motion.div>
@@ -43,32 +43,50 @@ export function Logo({ brand, width = 200, height = 60, className = '', showFall
   return (
     <motion.div
       className={`relative ${className}`}
-      style={{ width, height }}
+      style={{ width: '100%', maxWidth: width, height }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Image
-        src={imgSrc}
+      <img
+        src={currentSrc}
         alt={`${brand === 'prospere' ? 'Prospere' : 'BidCon'} Logo`}
         width={width}
         height={height}
-        className="object-contain"
+        className="object-contain w-full h-auto"
         onError={handleError}
-        unoptimized
-        priority={brand === 'prospere'}
+        style={{ maxWidth: '100%', height: 'auto' }}
       />
     </motion.div>
   )
 }
 
 export function LogoIcon({ brand, size = 40, className = '' }: { brand: 'prospere' | 'bidcon'; size?: number; className?: string }) {
-  const [imgSrc, setImgSrc] = useState(`/logo/${brand}-icon.svg`)
+  const [imgError, setImgError] = useState(false)
+  const [currentSrc, setCurrentSrc] = useState(`/logo/${brand}-icon.svg`)
 
   const handleError = () => {
-    if (imgSrc.endsWith('.svg')) {
-      setImgSrc(`/logo/${brand}-icon.png`)
+    if (currentSrc.endsWith('.svg')) {
+      setCurrentSrc(`/logo/${brand}-icon.png`)
+    } else {
+      setImgError(true)
     }
+  }
+
+  if (imgError) {
+    return (
+      <motion.div
+        className={`flex items-center justify-center ${className} bg-prospere/20 rounded-lg`}
+        style={{ width: size, height: size }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="text-prospere font-bold text-xs">
+          {brand === 'prospere' ? 'P' : 'BC'}
+        </span>
+      </motion.div>
+    )
   }
 
   return (
@@ -79,14 +97,14 @@ export function LogoIcon({ brand, size = 40, className = '' }: { brand: 'prosper
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Image
-        src={imgSrc}
+      <img
+        src={currentSrc}
         alt={`${brand === 'prospere' ? 'Prospere' : 'BidCon'} Icon`}
         width={size}
         height={size}
         className="object-contain"
         onError={handleError}
-        unoptimized
+        style={{ maxWidth: '100%', height: 'auto' }}
       />
     </motion.div>
   )

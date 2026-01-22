@@ -1,3 +1,9 @@
-<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <text x="10" y="40" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#E50914">PROSPERE</text>
+<svg width="300" height="90" viewBox="0 0 300 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="prospereGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E50914;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF4444;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <text x="10" y="55" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="url(#prospereGradient)" letter-spacing="2">PROSPERE</text>
 </svg>
