@@ -24,6 +24,7 @@ body {
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -37,6 +38,12 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #c90611;
+}
+
+/* Horizontal scrollbar for menu */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #e50914 transparent;
 }
 
 /* Selection */

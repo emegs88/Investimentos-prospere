@@ -123,7 +123,7 @@ export default function Home() {
       />
 
       {/* Main slide area */}
-      <div className="w-full h-full relative lg:pl-80">
+      <div className="w-full h-full relative pt-14 md:pt-14">
         <AnimatePresence mode="wait" custom={direction}>
           <SlideShell
             key={currentSlide}
@@ -167,7 +167,7 @@ export default function Home() {
       </div>
 
       {/* Top right actions */}
-      <div className="fixed top-4 sm:top-8 right-4 sm:right-8 flex items-center gap-2 sm:gap-3 z-40">
+      <div className="fixed top-16 md:top-16 sm:top-20 right-4 sm:right-8 flex items-center gap-2 sm:gap-3 z-40">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -192,7 +192,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="fixed bottom-0 left-0 right-0 h-14 sm:h-16 flex items-center justify-between px-4 sm:px-8 border-t border-white/10 bg-black/50 backdrop-blur-sm lg:pl-96 z-30">
+      <div className="fixed bottom-0 left-0 right-0 h-14 sm:h-16 flex items-center justify-between px-4 sm:px-8 border-t border-white/10 bg-black/50 backdrop-blur-sm z-30">
         <div className="text-gray-600 text-xs sm:text-sm font-mono">
           Prospere {new Date().getFullYear()}
         </div>
