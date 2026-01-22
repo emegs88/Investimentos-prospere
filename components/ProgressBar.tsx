@@ -13,10 +13,16 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
   return (
     <div className="fixed top-0 left-0 right-0 h-1 bg-black/20 z-50">
       <motion.div
-        className="h-full bg-gradient-to-r from-prospere to-red-500"
+        className="h-full bg-gradient-to-r from-prospere via-red-500 to-prospere bg-[length:200%_100%]"
         initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        animate={{ 
+          width: `${progress}%`,
+          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+        }}
+        transition={{ 
+          width: { duration: 0.6, ease: 'easeOut' },
+          backgroundPosition: { duration: 3, repeat: Infinity, ease: 'linear' }
+        }}
       />
     </div>
   )

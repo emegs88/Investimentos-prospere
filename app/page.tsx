@@ -196,8 +196,19 @@ export default function Home() {
         <div className="text-gray-600 text-xs sm:text-sm font-mono">
           Prospere {new Date().getFullYear()}
         </div>
-        <div className="text-gray-600 text-xs hidden md:block">
-          Use ← → ou N/P para navegar | F para tela cheia
+        <div className="flex items-center gap-4">
+          <a
+            href="https://wa.me/5519997561909"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-green-400 transition-colors text-xs sm:text-sm hidden sm:flex items-center gap-1"
+            title="WhatsApp: (19) 99756-1909"
+          >
+            <span className="hidden md:inline">WhatsApp:</span> (19) 99756-1909
+          </a>
+          <div className="text-gray-600 text-xs hidden md:block">
+            Use ← → ou N/P para navegar | F para tela cheia
+          </div>
         </div>
       </div>
     </div>

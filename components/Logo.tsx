@@ -14,11 +14,34 @@ interface LogoProps {
 
 export function Logo({ brand, width = 200, height = 60, className = '', showFallback = true }: LogoProps) {
   const [imgError, setImgError] = useState(false)
-  const [currentSrc, setCurrentSrc] = useState(`/logo/${brand}-logo.svg`)
+  // Para Prospere, tenta logo-inicial primeiro (PNG e SVG), depois logo normal
+  // Para BidCon, usa logo normal
+  const getInitialSrc = () => {
+    if (brand === 'prospere') {
+      // Tenta PNG primeiro na logo-inicial (mais comum)
+      return `/logo-inicial/${brand}-logo.png`
+    }
+    return `/logo/${brand}-logo.svg`
+  }
+  const [currentSrc, setCurrentSrc] = useState(getInitialSrc())
 
   const handleError = () => {
-    if (currentSrc.endsWith('.svg')) {
+    if (brand === 'prospere' && currentSrc.includes('logo-inicial')) {
+      if (currentSrc.endsWith('.png')) {
+        // Tenta SVG na logo-inicial
+        setCurrentSrc(`/logo-inicial/${brand}-logo.svg`)
+      } else if (currentSrc.endsWith('.svg')) {
+        // Se falhar SVG, tenta logo normal PNG
+        setCurrentSrc(`/logo/${brand}-logo.png`)
+      } else {
+        setImgError(true)
+      }
+    } else if (currentSrc.includes('logo') && currentSrc.endsWith('.svg')) {
+      // Tenta PNG na logo normal
       setCurrentSrc(`/logo/${brand}-logo.png`)
+    } else if (currentSrc.endsWith('.png')) {
+      // Última tentativa: SVG na logo normal
+      setCurrentSrc(`/logo/${brand}-logo.svg`)
     } else {
       setImgError(true)
     }

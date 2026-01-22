@@ -26,11 +26,12 @@ export function DeckNav({ currentSlide, onSelectSlide }: DeckNavProps) {
             <motion.button
               key={slide.id}
               onClick={() => onSelectSlide(index)}
-              whileHover={{ x: 4 }}
-              className={`w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${
+              whileHover={{ x: 4, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 flex items-center gap-3 ${
                 currentSlide === index
-                  ? 'bg-prospere text-white'
-                  : 'text-gray-300 hover:bg-white/5'
+                  ? 'bg-prospere text-white shadow-lg shadow-prospere/50'
+                  : 'text-gray-300 hover:bg-white/10 hover:text-white'
               }`}
             >
               <span className="text-xs font-mono">
